@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:18 # Usa l'immagine di Node.js
+    build: .
+    container_name: benvenuto-web # Nome del container
+    ports:
+      - "3000:3000" # Espone la porta 3000 sulla macchina host
+    volumes:
+      - .:/usr/src/app # Collega la directory corrente al container
+    command: ["node", "app.js"] # Comando per avviare l'app
+    restart: always # Riavvia il container se fallisce
+
+# Definizione delle reti e delle variabili di ambiente se necessarie
+networks:
+  default:
+    driver: bridge
